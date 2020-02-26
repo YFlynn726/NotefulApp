@@ -1,0 +1,19 @@
+.navbar {
+  text-align: center;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  min-height: 10vh;
+  background-color: rgb(61, 76, 82);
+  color: white;
+  font-size: 30px;
+  font-weight: bolder;
+}
+
+nav a {
+  display: block;
+  color: white;
+  padding: 16px;
+  text-decoration: none;
+  text-align: center;
+}

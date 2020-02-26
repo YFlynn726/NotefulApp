@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import Mainpage from "./Mainpage";
+import Folderpage from "./Folderpage";
+import Notepage from "./Notepage";
+import Sidebar from "./Sidebar";
+import Navbar from "./Navbar";
+import dummyStore from "./dummy-store";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    notes: [],
+    folders: []
+  };
+  componentDidMount() {
+    setTimeout(() => this.setState(dummyStore), 600);
+  }
+  render() {
+    return (
+      <Router>
+        <div className="App">
+          <Navbar />
+          <Sidebar />
+          <Switch>
+            <Route path="/" exact component={Mainpage} />
+            <Route path="/Folderpage" component={Folderpage} />
+            <Route path="/Notepage" component={Notepage} />
+          </Switch>
+        </div>
+      </Router>
+    );
+  }
 }
 
 export default App;

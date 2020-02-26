@@ -1,0 +1,19 @@
+ul {
+  list-style-type: none;
+}
+
+li {
+  border: black solid 1px;
+  padding: 16px;
+}
+
+.content {
+  margin-left: 200px;
+  margin-right: 100px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+.add-note {
+  margin-left: 40px;
+}
