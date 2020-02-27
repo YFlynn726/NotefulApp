@@ -8,6 +8,7 @@ class Notepage extends Component {
     // loop through notes from store and filter for the notes
     // that have a note matching this note id
     const notedetails = STORE.notes
+
       .filter(note => {
         return note.content === noteId;
       })

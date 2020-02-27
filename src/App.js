@@ -25,7 +25,7 @@ class App extends Component {
           <Switch>
             <Route path="/" exact component={Mainpage} />
             <Route path="/folders/:folder_id" component={Folderpage} />
-            <Route path="/notes/:note_id" component={Notepage} />
+            <Route path="/notes/:note_content" component={Notepage} />
           </Switch>
         </div>
       </Router>

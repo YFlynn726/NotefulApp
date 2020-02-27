@@ -19,7 +19,7 @@
 }
 
 .sidebar a.active {
-  background-color: lightskyblue;
+  background-color: rgb(63, 74, 82);
   color: white;
 }
 

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Sidebar.css";
 import STORE from "./dummy-store.js";
-import { Link, Router, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // use the folder data to generate folder NavLinks
 // attach each id of a folder to the NavLink
