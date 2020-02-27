@@ -24,8 +24,8 @@ class App extends Component {
           <Sidebar />
           <Switch>
             <Route path="/" exact component={Mainpage} />
-            <Route path="/Folderpage" component={Folderpage} />
-            <Route path="/Notepage" component={Notepage} />
+            <Route path="/folders/:folder_id" component={Folderpage} />
+            <Route path="/notes/:note_id" component={Notepage} />
           </Switch>
         </div>
       </Router>
