@@ -7,6 +7,8 @@ import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
 import dummyStore from "./dummy-store";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import AddFolder from "./AddFolder";
+import AddNote from "./AddNote";
 
 class App extends Component {
   state = {
@@ -25,7 +27,9 @@ class App extends Component {
           <Switch>
             <Route path="/" exact component={Mainpage} />
             <Route path="/folders/:folder_id" component={Folderpage} />
-            <Route path="/notes/:note_content" component={Notepage} />
+            <Route path="/notes/:note_id" component={Notepage} />
+            <Route path="/AddFolder" exact component={AddFolder} />
+            <Route path="/AddNote" exact component={AddNote} />
           </Switch>
         </div>
       </Router>

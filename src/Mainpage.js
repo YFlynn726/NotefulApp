@@ -16,7 +16,9 @@ class Mainpage extends Component {
     return (
       <div className="content">
         <ul>{notes}</ul>
-        <input type="button" value="Add File" />
+        <Link to={"/AddNote"}>
+          <input type="button" value="Add Note" />
+        </Link>
       </div>
     );
   }

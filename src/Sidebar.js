@@ -19,7 +19,14 @@ class Sidebar extends Component {
     return (
       <div className="sidebar">
         {folders}
-        <input type="button" value="Add File" />
+        <Link to={"/AddFolder"}>
+          <input
+            onChange={this.props.onChange}
+            onSubmit={this.props.onSubmit}
+            type="button"
+            value="Add Folder"
+          />
+        </Link>
       </div>
     );
   }
