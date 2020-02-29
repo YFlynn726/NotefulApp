@@ -1,14 +1,18 @@
 import React, { Component } from "react";
-import STORE from "./dummy-store.js";
+//import STORE from "./dummy-store.js";
 import { Link } from "react-router-dom";
+import NotefulContext from "./NotefulContext";
 
 class Notepage extends Component {
+  static contextType = NotefulContext;
+
   render() {
-    const noteId = this.props.match.params.note_id;
+    const noteId = this.context;
+    //const noteId = this.props.match.params.note_id;
     // loop through notes from store and filter for the notes
     // that have a note matching this note id
     console.log(this.props.match);
-    const notedetails = STORE.notes
+    const notedetails = this.context.notes
 
       .filter(note => {
         return note.id === noteId;

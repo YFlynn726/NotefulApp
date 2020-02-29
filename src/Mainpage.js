@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Mainpage.css";
-import STORE from "./dummy-store.js";
+//import STORE from "./dummy-store.js";
 import { Link } from "react-router-dom";
 import NotefulContext from "./NotefulContext";
 
@@ -8,7 +8,8 @@ class Mainpage extends Component {
   static contextType = NotefulContext;
 
   render() {
-    const notes = STORE.notes.map(note => {
+    //how do i use context instead of the prop
+    const notes = this.context.notes.map(note => {
       return (
         <Link key={note.id} to={`/notes/${note.id}`}>
           <li>{note.name}</li>

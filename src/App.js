@@ -5,6 +5,7 @@ import Folderpage from "./Folderpage";
 import Notepage from "./Notepage";
 import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
+import config from "./config";
 //import dummyStore from "./dummy-store";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AddFolder from "./AddFolder";
@@ -17,7 +18,23 @@ class App extends Component {
     folders: []
   };
   componentDidMount() {
-    //setTimeout(() => this.setState(dummyStore), 600);
+    Promise.all([
+      fetch(`${config.API_ENDPOINT}/notes`),
+      fetch(`${config.API_ENDPOINT}/folders`)
+    ])
+      .then(([notesRes, foldersRes]) => {
+        if (!notesRes.ok) return notesRes.json().then(e => Promise.reject(e));
+        if (!foldersRes.ok)
+          return foldersRes.json().then(e => Promise.reject(e));
+
+        return Promise.all([notesRes.json(), foldersRes.json()]);
+      })
+      .then(([notes, folders]) => {
+        this.setState({ notes, folders });
+      })
+      .catch(error => {
+        console.error({ error });
+      });
   }
   render() {
     const contextValue = {

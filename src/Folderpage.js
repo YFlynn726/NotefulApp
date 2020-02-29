@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import STORE from "./dummy-store.js";
+//import STORE from "./dummy-store.js";
 import { Link } from "react-router-dom";
+import NotefulContext from "./NotefulContext";
 
 // the id of the folder you're currently viewing
 // can get accessed from the route params
@@ -8,11 +9,13 @@ import { Link } from "react-router-dom";
 // filter through the notes using the folder id
 
 class Folderpage extends Component {
+  static contextType = NotefulContext;
   render() {
-    const folderId = this.props.match.params.folder_id;
+    //const folderId = this.props.match.params.folder_id;
     // loop through notes from store and filter for the notes
     // that have a folder matching this folder id
-    const notes = STORE.notes
+    const folderId = this.context;
+    const notes = this.context.notes
       .filter(note => {
         return note.folderId === folderId;
       })
