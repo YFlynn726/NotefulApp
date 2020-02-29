@@ -2,8 +2,11 @@ import React, { Component } from "react";
 import "./Mainpage.css";
 import STORE from "./dummy-store.js";
 import { Link } from "react-router-dom";
+import NotefulContext from "./NotefulContext";
 
 class Mainpage extends Component {
+  static contextType = NotefulContext;
+
   render() {
     const notes = STORE.notes.map(note => {
       return (
