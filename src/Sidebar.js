@@ -1,14 +1,17 @@
 import React, { Component } from "react";
 import "./Sidebar.css";
-import STORE from "./dummy-store.js";
+//import STORE from "./dummy-store.js";
+import NotefulContext from "./NotefulContext";
 import { Link } from "react-router-dom";
 
 // use the folder data to generate folder NavLinks
 // attach each id of a folder to the NavLink
 
 class Sidebar extends Component {
+  static contextType = NotefulContext;
+
   render() {
-    const folders = STORE.folders.map(folder => {
+    const folders = this.context.folders.map(folder => {
       return (
         <Link key={folder.id} to={`/folders/${folder.id}`}>
           {folder.name}

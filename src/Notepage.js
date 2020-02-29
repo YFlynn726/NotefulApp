@@ -7,8 +7,8 @@ class Notepage extends Component {
   static contextType = NotefulContext;
 
   render() {
-    const noteId = this.context;
-    //const noteId = this.props.match.params.note_id;
+    //const noteId = this.context;
+    const noteId = this.props.match.params.note_id;
     // loop through notes from store and filter for the notes
     // that have a note matching this note id
     console.log(this.props.match);

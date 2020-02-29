@@ -11,10 +11,10 @@ import NotefulContext from "./NotefulContext";
 class Folderpage extends Component {
   static contextType = NotefulContext;
   render() {
-    //const folderId = this.props.match.params.folder_id;
+    const folderId = this.props.match.params.folder_id;
     // loop through notes from store and filter for the notes
     // that have a folder matching this folder id
-    const folderId = this.context;
+    //const folderId = this.context;
     const notes = this.context.notes
       .filter(note => {
         return note.folderId === folderId;

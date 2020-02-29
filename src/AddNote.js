@@ -1,15 +1,16 @@
 import React, { Component } from "react";
-import NotefulContext from "./NotefulContext";
+//import NotefulContext from "./NotefulContext";
 
 class AddNote extends Component {
-  //constructor(props) {
-  //super(props);
-  //this.state = { value: "" };
+  constructor(props) {
+    super(props);
+    this.state = { value: "" };
+  }
 
   //this.handleChange = this.handleChange.bind(this);
   //this.handleSubmit = this.handleSubmit.bind(this);
   //}
-  static contextType = NotefulContext;
+  //static contextType = NotefulContext;
 
   handleChange(event) {
     this.setState({ value: event.target.value });
