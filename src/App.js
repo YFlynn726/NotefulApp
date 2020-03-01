@@ -15,7 +15,10 @@ import NotefulContext from "./NotefulContext";
 class App extends Component {
   state = {
     notes: [],
-    folders: []
+    folders: [],
+    addNote: this.handleSubmit,
+    addFolder: this.handleSubmit,
+    deleteNote: this.handleSubmit
   };
   componentDidMount() {
     Promise.all([
