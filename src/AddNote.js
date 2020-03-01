@@ -4,44 +4,57 @@ import React, { Component } from "react";
 class AddNote extends Component {
   constructor(props) {
     super(props);
-    this.state = { value: "" };
+    this.state = {
+      name: "",
+      content: ""
+    };
 
-    this.handleChange = this.handleChange.bind(this);
+    //this.handleChange = this.handleChange.bind(this);
     //this.handleSubmit = this.handleSubmit.bind(this);
     //static contextType = NotefulContext;
   }
-  handleChange(event) {
-    this.setState({ value: event.target.value });
-  }
 
-  handleSubmit(event) {
+  handleSubmit = event => {
     event.preventDefault();
-  }
+    //const { name, content } = this.handleSubmit;
+    const data = this.context;
+    console.log(data);
+    //console.log("Content: ", content.value);
+  };
+
+  handleChange = event => {
+    console.log(event.target.name);
+    console.log(event.target.value);
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
 
   render() {
+    const { name } = this.state;
+    const { content } = this.state;
     return (
       <form className="content" onSubmit={this.handleSubmit}>
         <label>
           Name:
           <input
+            name="name"
             type="text"
-            value={this.context.value}
-            onChange={() => this.context.onChange}
+            value={name}
+            onChange={this.handleChange}
           />
         </label>
+        <br />
         <label>
           Content:
           <input
+            name="content"
             type="text"
-            value={this.context.value}
-            onChange={() => this.context.onChange}
+            value={content}
+            onChange={this.handleChange}
           />
         </label>
-        <input
-          type="submit"
-          value="Submit"
-          onClick={() => this.context.onSubmit}
-        />
+        <input type="submit" value="Submit" onClick={this.handleSubmit} />
       </form>
     );
   }
