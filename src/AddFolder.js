@@ -1,14 +1,14 @@
 import React, { Component } from "react";
+import NotefulContext from "./NotefulContext";
 
 class AddFolder extends Component {
+  static contextType = NotefulContext;
+
   constructor(props) {
     super(props);
     this.state = {
       name: ""
     };
-
-    //this.handleChange = this.handleChange.bind(this);
-    //this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange = event => {
@@ -19,8 +19,8 @@ class AddFolder extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const data = this.state;
-    console.log(data);
+    console.log(this.state.name);
+    this.context.addFolder(this.state.name);
   };
   render() {
     const { name } = this.state;
@@ -35,7 +35,8 @@ class AddFolder extends Component {
             onChange={this.handleChange}
           />
         </label>
-        <input type="submit" value="Submit" onClick={this.handleSubmit} />
+
+        <input type="submit" value="Submit" />
       </form>
     );
   }

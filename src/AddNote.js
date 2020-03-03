@@ -1,24 +1,25 @@
 import React, { Component } from "react";
-//import NotefulContext from "./NotefulContext";
+import NotefulContext from "./NotefulContext";
 
 class AddNote extends Component {
+  static contextType = NotefulContext;
+
   constructor(props) {
     super(props);
     this.state = {
       name: "",
       content: ""
     };
-
-    //this.handleChange = this.handleChange.bind(this);
-    //this.handleSubmit = this.handleSubmit.bind(this);
-    //static contextType = NotefulContext;
   }
 
   handleSubmit = event => {
     event.preventDefault();
-    //const { name, content } = this.handleSubmit;
-    const data = this.context;
-    console.log(data);
+    //console.log(event);
+    this.context.addNote(this.state.name, this.state.content);
+    // console.log(this.state.name);
+    //console.log(this.state.content);
+    console.log(this.context);
+    //window.location.href = "/";
     //console.log("Content: ", content.value);
   };
 
@@ -33,6 +34,7 @@ class AddNote extends Component {
   render() {
     const { name } = this.state;
     const { content } = this.state;
+    console.log(this.state);
     return (
       <form className="content" onSubmit={this.handleSubmit}>
         <label>
@@ -54,7 +56,7 @@ class AddNote extends Component {
             onChange={this.handleChange}
           />
         </label>
-        <input type="submit" value="Submit" onClick={this.handleSubmit} />
+        <input type="submit" value="Submit" />
       </form>
     );
   }

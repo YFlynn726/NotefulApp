@@ -16,9 +16,9 @@ class App extends Component {
   state = {
     notes: [],
     folders: [],
-    addNote: this.handleSubmit,
-    addFolder: this.handleSubmit,
-    deleteNote: this.handleSubmit
+    addNote: this.addNote,
+    addFolder: this.addFolder
+    //deleteNote: this.handleSubmit
   };
   componentDidMount() {
     Promise.all([
@@ -39,12 +39,37 @@ class App extends Component {
         console.error({ error });
       });
   }
+  //need to update state for folders
+  addFolder = folder => {
+    console.log(folder);
+    const newFolder = {
+      id: this.state.folders.length,
+      name: folder
+    };
+    console.log(newFolder);
+
+    this.setState({ folders: [...this.state.folders, newFolder] });
+  };
+
+  //need to update state for notes
+  addNote = (note, content) => {
+    console.log(note, content);
+    const newNote = {
+      id: this.state.notes.length,
+      name: note,
+      content: content
+    };
+
+    this.setState({ notes: [...this.state.notes, newNote] });
+  };
+
   render() {
     const contextValue = {
+      //does this need to be this.context
       notes: this.state.notes,
       folders: this.state.folders,
       addNote: this.addNote,
-      deleteNote: this.deleteNote,
+      //deleteNote: this.deleteNote,
       addFolder: this.addFolder
     };
     return (

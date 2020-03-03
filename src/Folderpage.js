@@ -30,6 +30,9 @@ class Folderpage extends Component {
     return (
       <div className="content">
         <ul>{notes}</ul>
+        <Link to={"/Mainpage"}>
+          <input type="button" value="Add Note" />
+        </Link>
       </div>
     );
   }
