@@ -21,6 +21,7 @@ class AddFolder extends Component {
     event.preventDefault();
     console.log(this.state.name);
     this.context.addFolder(this.state.name);
+    this.props.history.push("/");
   };
   render() {
     const { name } = this.state;
@@ -35,7 +36,6 @@ class AddFolder extends Component {
             onChange={this.handleChange}
           />
         </label>
-
         <input type="submit" value="Submit" />
       </form>
     );

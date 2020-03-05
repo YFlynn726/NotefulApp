@@ -43,12 +43,30 @@ class App extends Component {
   addFolder = folder => {
     console.log(folder);
     const newFolder = {
-      id: this.state.folders.length,
+      //id: this.state.folders.length,
       name: folder
     };
     console.log(newFolder);
 
+    fetch(`${config.API_ENDPOINT}/folders`, {
+      method: "POST",
+      headers: {
+        auth: "1234"
+      },
+      body: JSON.stringify({ newFolder })
+    })
+      .then(function(data) {
+        console.log("Request success: ", data);
+      })
+      .catch(function(error) {
+        console.log("Request failure: ", error);
+      });
+
+    console.log(newFolder);
+
     this.setState({ folders: [...this.state.folders, newFolder] });
+
+    console.log(this.state.folders);
   };
 
   //need to update state for notes

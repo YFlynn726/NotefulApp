@@ -21,6 +21,7 @@ class AddNote extends Component {
     console.log(this.context);
     //window.location.href = "/";
     //console.log("Content: ", content.value);
+    this.props.history.push("/");
   };
 
   handleChange = event => {
@@ -35,8 +36,23 @@ class AddNote extends Component {
     const { name } = this.state;
     const { content } = this.state;
     console.log(this.state);
+
+    let options = this.context.folders.map(folder => {
+      return (
+        <option key={folder.id} value={folder.name}>
+          {folder.name}
+        </option>
+      );
+    });
     return (
       <form className="content" onSubmit={this.handleSubmit}>
+        <label>
+          Select folder:
+          <select onChange={this.handleChange}>{options}</select>
+        </label>
+
+        <br />
+
         <label>
           Name:
           <input
