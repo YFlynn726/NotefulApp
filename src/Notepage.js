@@ -21,7 +21,10 @@ class Notepage extends Component {
         return (
           <div key={note.id}>
             <li>{note.name}</li>
-            <li>{note.content}</li>
+            <li>
+              {note.content}
+              <button>Delete</button>
+            </li>
           </div>
         );
       });
