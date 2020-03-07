@@ -2,9 +2,15 @@ import React, { Component } from "react";
 //import STORE from "./dummy-store.js";
 import { Link } from "react-router-dom";
 import NotefulContext from "./NotefulContext";
+//import config from "./config";
 
 class Notepage extends Component {
   static contextType = NotefulContext;
+
+  deleteNoteRequest = (noteId, cb) => {
+    alert("hi");
+    this.context.deleteNote();
+  };
 
   render() {
     //const noteId = this.context;
@@ -23,9 +29,7 @@ class Notepage extends Component {
             <li>{note.name}</li>
             <li>
               {note.content}
-              <button onClick={() => this.props.deleteNote(this.props.id)}>
-                Delete
-              </button>
+              <button onClick={this.deleteNoteRequest}>Delete</button>
             </li>
           </div>
         );

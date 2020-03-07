@@ -26,6 +26,7 @@ class App extends Component {
     this.setState({
       notes: { newNotes }
     });
+    console.log(this.state);
   };
   componentDidMount() {
     Promise.all([
