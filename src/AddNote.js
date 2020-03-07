@@ -8,14 +8,19 @@ class AddNote extends Component {
     super(props);
     this.state = {
       name: "",
-      content: ""
+      content: "",
+      folderId: ""
     };
   }
 
   handleSubmit = event => {
     event.preventDefault();
     //console.log(event);
-    this.context.addNote(this.state.name, this.state.content);
+    this.context.addNote(
+      this.state.name,
+      this.state.content,
+      this.state.folderId
+    );
     // console.log(this.state.name);
     //console.log(this.state.content);
     console.log(this.context);
@@ -32,6 +37,9 @@ class AddNote extends Component {
     });
   };
 
+  handleFolderChange = event => {
+    this.setState({ folderId: event.target.value });
+  };
   render() {
     const { name } = this.state;
     const { content } = this.state;
@@ -39,7 +47,7 @@ class AddNote extends Component {
 
     let options = this.context.folders.map(folder => {
       return (
-        <option key={folder.id} value={folder.name}>
+        <option key={folder.id} value={folder.id}>
           {folder.name}
         </option>
       );
@@ -48,7 +56,7 @@ class AddNote extends Component {
       <form className="content" onSubmit={this.handleSubmit}>
         <label>
           Select folder:
-          <select onChange={this.handleChange}>{options}</select>
+          <select onChange={this.handleFolderChange}>{options}</select>
         </label>
 
         <br />

@@ -61,8 +61,8 @@ class App extends Component {
       .then(data => {
         console.log("Request success: ", data);
         this.setState({
-          folders: [...this.state.folders, newFolder],
-          id: Response.id
+          id: Response.id,
+          folders: [...this.state.folders, data]
         });
       })
       .catch(error => {
@@ -76,12 +76,13 @@ class App extends Component {
   };
 
   //need to update state for notes
-  addNote = (note, content) => {
+  addNote = (note, content, folderId) => {
     console.log(note, content);
     const newNote = {
       //id: this.state.notes.length,
       name: note,
-      content: content
+      content: content,
+      folderId
     };
     console.log(newNote);
     fetch(`${config.API_ENDPOINT}/notes`, {
@@ -96,8 +97,9 @@ class App extends Component {
       })
       .then(data => {
         console.log("Request success: ", data);
+
         this.setState({
-          notes: [...this.state.notes, newNote],
+          notes: [...this.state.notes, data],
           id: Response.id,
           folderId: Response.folderId,
           modified: Response.modified
