@@ -23,7 +23,9 @@ class Notepage extends Component {
             <li>{note.name}</li>
             <li>
               {note.content}
-              <button>Delete</button>
+              <button onClick={() => this.props.deleteNote(this.props.id)}>
+                Delete
+              </button>
             </li>
           </div>
         );

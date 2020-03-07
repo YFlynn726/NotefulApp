@@ -17,8 +17,15 @@ class App extends Component {
     notes: [],
     folders: [],
     addNote: this.addNote,
-    addFolder: this.addFolder
-    //deleteNote: this.handleSubmit
+    addFolder: this.addFolder,
+    deleteNote: this.deleteNote
+  };
+
+  deleteNote = noteId => {
+    const newNotes = this.state.notes.filter(note => note.id !== noteId);
+    this.setState({
+      notes: { newNotes }
+    });
   };
   componentDidMount() {
     Promise.all([
@@ -118,7 +125,7 @@ class App extends Component {
       notes: this.state.notes,
       folders: this.state.folders,
       addNote: this.addNote,
-      //deleteNote: this.deleteNote,
+      deleteNote: this.deleteNote,
       addFolder: this.addFolder
     };
     return (
