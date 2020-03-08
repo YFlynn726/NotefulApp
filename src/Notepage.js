@@ -9,7 +9,7 @@ class Notepage extends Component {
 
   deleteNoteRequest = (noteId, cb) => {
     alert("hi");
-    this.context.deleteNote();
+    this.context.deleteNote(noteId);
   };
 
   render() {
@@ -18,6 +18,8 @@ class Notepage extends Component {
     // loop through notes from store and filter for the notes
     // that have a note matching this note id
     console.log(this.props.match);
+    console.log(this.context.notes);
+
     const notedetails = this.context.notes
 
       .filter(note => {

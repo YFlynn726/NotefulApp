@@ -22,7 +22,13 @@ class App extends Component {
   };
 
   deleteNote = noteId => {
-    const newNotes = this.state.notes.filter(note => note.id !== noteId);
+    console.log("i made it here");
+
+    const newNotes = this.state.notes.filter(
+      note => note.id.toString() !== noteId.toString()
+    );
+    console.log(newNotes);
+
     this.setState({
       notes: { newNotes }
     });
