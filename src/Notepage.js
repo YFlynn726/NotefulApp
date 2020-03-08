@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import NotefulContext from "./NotefulContext";
 //import config from "./config";
+import "./notepage.css";
 
 class Notepage extends Component {
   static contextType = NotefulContext;
@@ -28,11 +29,18 @@ class Notepage extends Component {
       .map(note => {
         return (
           <div key={note.id}>
-            <li>{note.name}</li>
-            <li>
+            <li className="note_title">{note.name}</li>
+            <p>
               {note.content}
-              <button onClick={this.deleteNoteRequest}>Delete</button>
-            </li>
+
+              <br />
+              <button
+                className="delete_button"
+                onClick={this.deleteNoteRequest}
+              >
+                Delete
+              </button>
+            </p>
           </div>
         );
       });
