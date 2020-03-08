@@ -24,13 +24,12 @@ class App extends Component {
   deleteNote = noteId => {
     console.log("i made it here");
 
-    const newNotes = this.state.notes.filter(
-      note => note.id.toString() !== noteId.toString()
-    );
-    console.log(newNotes);
-
+    const newNotes = this.state.notes.filter(note => {
+      //console.log(note.id.toString(), noteId.toString());
+      return note.id.toString() !== noteId.toString();
+    });
     this.setState({
-      notes: { newNotes }
+      notes: newNotes
     });
     console.log(this.state);
   };

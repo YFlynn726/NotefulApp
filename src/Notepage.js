@@ -7,9 +7,9 @@ import NotefulContext from "./NotefulContext";
 class Notepage extends Component {
   static contextType = NotefulContext;
 
-  deleteNoteRequest = (noteId, cb) => {
-    alert("hi");
-    this.context.deleteNote(noteId);
+  deleteNoteRequest = () => {
+    this.context.deleteNote(this.props.match.params.note_id);
+    this.props.history.push("/");
   };
 
   render() {
