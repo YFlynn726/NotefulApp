@@ -11,6 +11,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AddFolder from "./AddFolder";
 import AddNote from "./AddNote";
 import NotefulContext from "./NotefulContext";
+import BoundaryError from "./BoundaryError";
 
 class App extends Component {
   state = {
@@ -137,17 +138,19 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <NotefulContext.Provider value={contextValue}>
-            <Navbar />
-            <Sidebar />
-            <Switch>
-              <Route path="/" exact component={Mainpage} />
-              <Route path="/folders/:folder_id" component={Folderpage} />
-              <Route path="/notes/:note_id" component={Notepage} />
-              <Route path="/AddFolder" exact component={AddFolder} />
-              <Route path="/AddNote" exact component={AddNote} />
-            </Switch>
-          </NotefulContext.Provider>
+          <BoundaryError>
+            <NotefulContext.Provider value={contextValue}>
+              <Navbar />
+              <Sidebar />
+              <Switch>
+                <Route path="/" exact component={Mainpage} />
+                <Route path="/folders/:folder_id" component={Folderpage} />
+                <Route path="/notes/:note_id" component={Notepage} />
+                <Route path="/AddFolder" exact component={AddFolder} />
+                <Route path="/AddNote" exact component={AddNote} />
+              </Switch>
+            </NotefulContext.Provider>
+          </BoundaryError>
         </div>
       </Router>
     );
