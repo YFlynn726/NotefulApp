@@ -18,12 +18,11 @@
   text-align: center;
 }
 
-.sidebar a.active {
-  background-color: rgb(63, 74, 82);
+.sidebar a:hover {
+  background-color: lightblue;
   color: white;
 }
-
-.sidebar a:hover:not(.active) {
-  background-color: lightblue;
+.active a:active {
+  background-color: rgb(63, 74, 82);
   color: white;
 }
