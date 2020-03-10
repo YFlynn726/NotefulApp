@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import NotefulContext from "./NotefulContext";
-import PropTypes from "prop-types";
 
 class AddFolder extends Component {
   static contextType = NotefulContext;
@@ -44,5 +43,3 @@ class AddFolder extends Component {
 }
 
 export default AddFolder;
-
-AddFolder.propTypes = {};
