@@ -1,17 +1,16 @@
 import React, { Component } from "react";
 import "./App.css";
-import Mainpage from "./Mainpage";
-import Folderpage from "./Folderpage";
-import Notepage from "./Notepage";
-import Sidebar from "./Sidebar";
-import Navbar from "./Navbar";
+import Mainpage from "./components/Mainpage";
+import Folderpage from "./components/Folderpage";
+import Notepage from "./components/Notepage";
+import Sidebar from "./components/Sidebar";
+import Navbar from "./components/Navbar";
 import config from "./config";
-//import dummyStore from "./dummy-store";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import AddFolder from "./AddFolder";
-import AddNote from "./AddNote";
-import NotefulContext from "./NotefulContext";
-import BoundaryError from "./BoundaryError";
+import AddFolder from "./components/AddFolder";
+import AddNote from "./components/AddNote";
+import NotefulContext from "./components/NotefulContext";
+import BoundaryError from "./components/BoundaryError";
 
 class App extends Component {
   state = {
@@ -57,7 +56,6 @@ class App extends Component {
   addFolder = folder => {
     console.log(folder);
     const newFolder = {
-      //id: this.state.folders.length,
       name: folder
     };
     console.log(newFolder);
@@ -86,14 +84,12 @@ class App extends Component {
     console.log(newFolder);
 
     console.log(this.context);
-    //console.log(this.state.folders);
   };
 
   //need to update state for notes
   addNote = (note, content, folderId) => {
     console.log(note, content);
     const newNote = {
-      //id: this.state.notes.length,
       name: note,
       content: content,
       folderId
@@ -128,7 +124,6 @@ class App extends Component {
   };
   render() {
     const contextValue = {
-      //does this need to be this.context
       notes: this.state.notes,
       folders: this.state.folders,
       addNote: this.addNote,
