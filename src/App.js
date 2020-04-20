@@ -18,66 +18,66 @@ class App extends Component {
     folders: [],
     addNote: this.addNote,
     addFolder: this.addFolder,
-    deleteNote: this.deleteNote
+    deleteNote: this.deleteNote,
   };
 
-  deleteNote = noteId => {
+  deleteNote = (noteId) => {
     console.log("i made it here");
 
-    const newNotes = this.state.notes.filter(note => {
+    const newNotes = this.state.notes.filter((note) => {
       //console.log(note.id.toString(), noteId.toString());
       return note.id.toString() !== noteId.toString();
     });
     this.setState({
-      notes: newNotes
+      notes: newNotes,
     });
     console.log(this.state);
   };
   componentDidMount() {
     Promise.all([
       fetch(`${config.API_ENDPOINT}/notes`),
-      fetch(`${config.API_ENDPOINT}/folders`)
+      fetch(`${config.API_ENDPOINT}/folders`),
     ])
       .then(([notesRes, foldersRes]) => {
-        if (!notesRes.ok) return notesRes.json().then(e => Promise.reject(e));
+        if (!notesRes.ok) return notesRes.json().then((e) => Promise.reject(e));
         if (!foldersRes.ok)
-          return foldersRes.json().then(e => Promise.reject(e));
+          return foldersRes.json().then((e) => Promise.reject(e));
 
         return Promise.all([notesRes.json(), foldersRes.json()]);
       })
       .then(([notes, folders]) => {
         this.setState({ notes, folders });
       })
-      .catch(error => {
+      .catch((error) => {
         console.error({ error });
       });
   }
   //need to update state for folders
-  addFolder = folder => {
+  addFolder = (folder) => {
     console.log(folder);
     const newFolder = {
-      name: folder
+      name: folder,
     };
     console.log(newFolder);
 
     fetch(`${config.API_ENDPOINT}/folders`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(newFolder)
+      body: JSON.stringify(newFolder),
     })
-      .then(res => {
+      .then((res) => {
         return res.json();
       })
-      .then(data => {
+      .then((data) => {
         console.log("Request success: ", data);
         this.setState({
           id: Response.id,
-          folders: [...this.state.folders, data]
+          folders: [...this.state.folders, data],
         });
       })
-      .catch(error => {
+      .catch((error) => {
         console.log("Request failure: ", error);
       });
 
@@ -92,30 +92,30 @@ class App extends Component {
     const newNote = {
       name: note,
       content: content,
-      folderId
+      folderId,
     };
     console.log(newNote);
     fetch(`${config.API_ENDPOINT}/notes`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(newNote)
+      body: JSON.stringify(newNote),
     })
-      .then(res => {
+      .then((res) => {
         return res.json();
       })
-      .then(data => {
+      .then((data) => {
         console.log("Request success: ", data);
 
         this.setState({
           notes: [...this.state.notes, data],
           id: Response.id,
           folderId: Response.folderId,
-          modified: Response.modified
+          modified: Response.modified,
         });
       })
-      .catch(error => {
+      .catch((error) => {
         console.log("Request failure: ", error);
       });
 
@@ -128,7 +128,7 @@ class App extends Component {
       folders: this.state.folders,
       addNote: this.addNote,
       deleteNote: this.deleteNote,
-      addFolder: this.addFolder
+      addFolder: this.addFolder,
     };
     return (
       <Router>
