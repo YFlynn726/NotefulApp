@@ -9,9 +9,9 @@ class Mainpage extends Component {
 
   render() {
     //how do i use context instead of the prop
-    const notes = this.context.notes.map(note => {
+    const notes = this.context.notes.map((note, index) => {
       return (
-        <Link key={note.id} to={`/notes/${note.id}`}>
+        <Link key={index} to={`/notes/${note.note_id}`}>
           <li>{note.name}</li>
         </Link>
       );

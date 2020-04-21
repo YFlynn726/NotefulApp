@@ -11,22 +11,31 @@ import NotefulContext from "./NotefulContext";
 class Folderpage extends Component {
   static contextType = NotefulContext;
   render() {
+    //console.log(this.context.notes);
+    // console.log("Notes");
     const folderId = this.props.match.params.folder_id;
     // loop through notes from store and filter for the notes
     // that have a folder matching this folder id
     //const folderId = this.context;
-    const notes = this.context.notes
-      .filter(note => {
-        return note.folderId === folderId;
-      })
-      .map(note => {
-        return (
-          <Link key={note.id} to={`/notes/${note.id}`}>
-            <li>{note.name}</li>
-          </Link>
-        );
-      });
-
+    // console.log("Folder ID");
+    console.log(folderId);
+    const filteredNotes = this.context.notes.filter((note) => {
+      //console.log(`${typeof folderId} vs ${typeof note.folder_id}`);
+      // console.log(`${folderId} vs ${note.folder_id}`);
+      //console.log(note);
+      // eslint-disable-next-line eqeqeq
+      return note.folder_id == folderId;
+    });
+    // console.log("Filtered notes");
+    console.log(filteredNotes);
+    const notes = filteredNotes.map((note, index) => {
+      return (
+        <Link key={index} to={`/notes/${note.note_id}`}>
+          <li>{note.name}</li>
+        </Link>
+      );
+    });
+    console.log(notes);
     return (
       <div className="content">
         <ul>{notes}</ul>

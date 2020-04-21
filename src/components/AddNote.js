@@ -10,14 +10,14 @@ class AddNote extends Component {
     this.state = {
       name: "",
       content: "",
-      folderId: "",
-      error: false
+      //folder_id: "",
+      error: false,
     };
   }
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
-    //console.log(event);
+    console.log(event);
     // validate and update the state if there is an error
     const isValid = this.validateName();
     if (!isValid.error) {
@@ -31,14 +31,14 @@ class AddNote extends Component {
     this.context.addNote(
       this.state.name,
       this.state.content,
-      this.state.folderId
+      this.state.folder_id
     );
     this.props.history.push("/");
   };
 
-  updateError = err => {
+  updateError = (err) => {
     this.setState({
-      error: err
+      error: err,
     });
   };
 
@@ -53,16 +53,16 @@ class AddNote extends Component {
     return result;
   };
 
-  handleChange = event => {
+  handleChange = (event) => {
     console.log(event.target.name);
     console.log(event.target.value);
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     });
   };
 
-  handleFolderChange = event => {
-    this.setState({ folderId: event.target.value });
+  handleFolderChange = (event) => {
+    this.setState({ folder_id: event.target.value });
   };
   render() {
     const { error } = this.state;
@@ -72,7 +72,7 @@ class AddNote extends Component {
     const { content } = this.state;
     console.log(this.state);
 
-    let options = this.context.folders.map(folder => {
+    let options = this.context.folders.map((folder) => {
       return (
         <option key={folder.id} value={folder.id}>
           {folder.name}

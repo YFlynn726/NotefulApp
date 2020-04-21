@@ -26,7 +26,7 @@ class App extends Component {
 
     const newNotes = this.state.notes.filter((note) => {
       //console.log(note.id.toString(), noteId.toString());
-      return note.id.toString() !== noteId.toString();
+      return note.note_id.toString() !== noteId.toString();
     });
     this.setState({
       notes: newNotes,
@@ -46,6 +46,7 @@ class App extends Component {
         return Promise.all([notesRes.json(), foldersRes.json()]);
       })
       .then(([notes, folders]) => {
+        //console.log(notes);
         this.setState({ notes, folders });
       })
       .catch((error) => {
@@ -87,12 +88,12 @@ class App extends Component {
   };
 
   //need to update state for notes
-  addNote = (note, content, folderId) => {
+  addNote = (note, content, folder_id) => {
     console.log(note, content);
     const newNote = {
       name: note,
       content: content,
-      folderId,
+      folder_id,
     };
     console.log(newNote);
     fetch(`${config.API_ENDPOINT}/notes`, {
@@ -110,8 +111,8 @@ class App extends Component {
 
         this.setState({
           notes: [...this.state.notes, data],
-          id: Response.id,
-          folderId: Response.folderId,
+          note_id: Response.note_id,
+          folder_id: Response.folder_id,
           modified: Response.modified,
         });
       })

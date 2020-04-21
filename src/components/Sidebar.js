@@ -11,12 +11,12 @@ class Sidebar extends Component {
   static contextType = NotefulContext;
 
   render() {
-    const folders = this.context.folders.map(folder => {
+    const folders = this.context.folders.map((folder) => {
       return (
         <NavLink
           activeStyle={{
             background: "lightslategray",
-            color: "white"
+            color: "white",
           }}
           key={folder.id}
           to={`/folders/${folder.id}`}
@@ -25,7 +25,8 @@ class Sidebar extends Component {
         </NavLink>
       );
     });
-
+    console.log(folders);
+    console.log(this.context.folders);
     return (
       <div className="sidebar">
         {folders}

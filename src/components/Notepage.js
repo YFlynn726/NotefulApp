@@ -19,16 +19,20 @@ class Notepage extends Component {
     // loop through notes from store and filter for the notes
     // that have a note matching this note id
     console.log(this.props.match);
-    console.log(this.context.notes);
+    //console.log(this.context.notes);
 
     const notedetails = this.context.notes
 
-      .filter(note => {
-        return note.id === noteId;
+      .filter((note) => {
+        // eslint-disable-next-line eqeqeq
+        return note.note_id == noteId;
       })
-      .map(note => {
+
+      .map((note) => {
+        console.log(note);
+
         return (
-          <div key={note.id}>
+          <div key={note.note_id}>
             <li className="note_title">{note.name}</li>
             <p>
               {note.content}
@@ -44,7 +48,7 @@ class Notepage extends Component {
           </div>
         );
       });
-
+    //console.log(this.context.notes);
     return (
       <div className="content">
         <ul>{notedetails}</ul>
