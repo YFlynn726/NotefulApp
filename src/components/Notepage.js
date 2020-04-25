@@ -18,7 +18,7 @@ class Notepage extends Component {
     const noteId = this.props.match.params.note_id;
     // loop through notes from store and filter for the notes
     // that have a note matching this note id
-    console.log(this.props.match);
+    //console.log(this.props.match);
     //console.log(this.context.notes);
 
     const notedetails = this.context.notes
@@ -29,7 +29,7 @@ class Notepage extends Component {
       })
 
       .map((note) => {
-        console.log(note);
+        //console.log(note);
 
         return (
           <div key={note.note_id}>

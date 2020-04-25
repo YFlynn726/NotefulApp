@@ -25,8 +25,8 @@ class Sidebar extends Component {
         </NavLink>
       );
     });
-    console.log(folders);
-    console.log(this.context.folders);
+    //console.log(folders);
+    //console.log(this.context.folders);
     return (
       <div className="sidebar">
         {folders}

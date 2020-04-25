@@ -70,7 +70,7 @@ class AddNote extends Component {
 
     const { name } = this.state;
     const { content } = this.state;
-    console.log(this.state);
+    //console.log(this.state);
 
     let options = this.context.folders.map((folder) => {
       return (

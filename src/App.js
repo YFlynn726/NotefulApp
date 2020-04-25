@@ -21,6 +21,37 @@ class App extends Component {
     deleteNote: this.deleteNote,
   };
 
+  // deleteNote = (noteId) => {
+  //   console.log("i made it here");
+
+  //   const newNotes = this.state.notes.filter((note) => {
+  //     //console.log(note.note_id.toString(), noteId.toString());
+  //     return note.note_id.toString() !== noteId.toString();
+  //   });
+  //   console.log(newNotes);
+  //   fetch(`${config.API_ENDPOINT}api/notes/:note_id`, {
+  //     method: "DELETE",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(newNotes),
+  //   })
+  //     .then((res) => {
+  //       return res.json();
+  //     })
+  //     .then((data) => {
+  //       console.log("Request success: ", data);
+
+  //       this.setState({
+  //         notes: newNotes,
+  //       });
+  //       console.log(this.state);
+  //     })
+  //     .catch((error) => {
+  //       console.log("Request failure: ", error);
+  //     });
+  // };
+
   deleteNote = (noteId) => {
     console.log("i made it here");
 
@@ -29,27 +60,21 @@ class App extends Component {
       return note.note_id.toString() !== noteId.toString();
     });
     console.log(newNotes);
-    // fetch(`${config.API_ENDPOINT}api/notes/:note_id`, {
-    //   method: "DELETE",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(newNotes),
-    // })
-    //   .then((res) => {
-    //     return res.json();
-    //   })
-    //   .then((data) => {
-    //     console.log("Request success: ", data);
-
+    fetch(`${config.API_ENDPOINT}api/notes/${noteId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+        console.log(this.state);
+      })
+      .catch((error) => {
+        console.log("Request failure: ", error);
+      });
     this.setState({
-      notes: newNotes,
+      notes: this.state.notes.filter((note) => +note.note_id !== +noteId),
     });
-    console.log(this.state);
-    // })
-    //     .catch((error) => {
-    //       console.log("Request failure: ", error);
-    //     });
   };
 
   componentDidMount() {
