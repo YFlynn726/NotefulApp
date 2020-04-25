@@ -29,27 +29,27 @@ class App extends Component {
       return note.note_id.toString() !== noteId.toString();
     });
     console.log(newNotes);
-    fetch(`${config.API_ENDPOINT}api/notes/:note_id`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newNotes),
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        console.log("Request success: ", data);
+    // fetch(`${config.API_ENDPOINT}api/notes/:note_id`, {
+    //   method: "DELETE",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(newNotes),
+    // })
+    //   .then((res) => {
+    //     return res.json();
+    //   })
+    //   .then((data) => {
+    //     console.log("Request success: ", data);
 
-        this.setState({
-          notes: newNotes,
-        });
-        //console.log(this.state);
-      })
-      .catch((error) => {
-        console.log("Request failure: ", error);
-      });
+    this.setState({
+      notes: newNotes,
+    });
+    console.log(this.state);
+    // })
+    //     .catch((error) => {
+    //       console.log("Request failure: ", error);
+    //     });
   };
 
   componentDidMount() {
