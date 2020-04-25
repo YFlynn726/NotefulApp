@@ -35,8 +35,8 @@ class App extends Component {
   };
   componentDidMount() {
     Promise.all([
-      fetch(`${config.API_ENDPOINT}/notes`),
-      fetch(`${config.API_ENDPOINT}/folders`),
+      fetch(`${config.API_ENDPOINT}api/notes`),
+      fetch(`${config.API_ENDPOINT}api/folders`),
     ])
       .then(([notesRes, foldersRes]) => {
         if (!notesRes.ok) return notesRes.json().then((e) => Promise.reject(e));
@@ -61,7 +61,7 @@ class App extends Component {
     };
     console.log(newFolder);
 
-    fetch(`${config.API_ENDPOINT}/folders`, {
+    fetch(`${config.API_ENDPOINT}api/folders`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -96,7 +96,7 @@ class App extends Component {
       folder_id,
     };
     console.log(newNote);
-    fetch(`${config.API_ENDPOINT}/notes`, {
+    fetch(`${config.API_ENDPOINT}api/notes`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
